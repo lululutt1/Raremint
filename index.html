@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAREMINT - Exclusive Pokémon Collectibles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #021024; 
+            --secondary: #c1e8ff;
+            --accent: #e60012;
+            --dark: #000000;
+            --light: #f8f6f3;
+            --gray: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('https://imgur.com/VYkHKNV.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        /* 顶部导航栏 */
+        .top-bar {
+            background-color: rgba(2, 16, 36, 0.9);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .top-bar a:hover {
+            color: var(--secondary);
+        }
+        
+        /* 头部区域 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 30px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 80px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* 滚动广告条 */
+        .marquee-bar {
+            background-color: var(--secondary);
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+        
+        .marquee-item {
+            display: inline-block;
+            margin: 0 40px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .marquee-item .tag {
+            background-color: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%);
+            margin: 40px 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin: 0 auto 30px;
+            color: var(--dark);
+            max-width: 600px;
+        }
+        
+        .exclusive-tag {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 产品展示 */
+        .products {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border-top: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 280px;
+            background-color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 轮播图样式 */
+        .carousel-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-slide {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .carousel-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 15px;
+            z-index: 10;
+        }
+        
+        .carousel-btn {
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 1.1rem;
+        }
+        
+        .carousel-btn:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .product-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            min-height: 54px;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-desc {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .product-features li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .product-features li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .product-cta {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .product-cta:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230,0,18,0.3);
+        }
+        
+        .product-cta i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .product-cta:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* 新品预告 */
+        .upcoming {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(230,0,18,0.05) 100%);
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .upcoming::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1542779283-429940ce8336?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .upcoming-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .upcoming-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 2px dashed var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .upcoming-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .upcoming-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .release-date {
+            background: var(--primary);
+            color: white;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* 联系区域 */
+        .contact {
+            padding: 80px 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text {
+            text-align: left;
+        }
+        
+        .contact-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-item p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .contact-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            height: 750px;
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .contact-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 20px 20px;
+            text-align: center;
+            position: relative;
+            margin-top: 60px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+        }
+        
+        .footer-logo-text span {
+            color: var(--secondary);
+        }
+        
+        .footer-tagline {
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-image {
+                height: 300px;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .hero {
+                min-height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .marquee-item {
+                font-size: 0.9rem;
+                margin: 0 20px;
+            }
+            
+            .carousel-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            .product-name {
+                font-size: 1.6rem;
+            }
+            
+            .product-price {
+                font-size: 1.6rem;
+            }
+            
+            .contact-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 顶部导航栏 -->
+    <div class="top-bar">
+        <a href="#"><i class="fas fa-truck"></i> Free Worldwide Shipping</a>
+        <a href="#"><i class="fas fa-shield-alt"></i> Authenticity Guaranteed</a>
+        <a href="#"><i class="fas fa-gift"></i> Limited Edition Products</a>
+    </div>
+    
+    <!-- 头部区域 -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="https://i.imgur.com/EXi6pHy.jpg" alt="RAREMINT Logo">
+                <div class="logo-text">RARE<span>MINT</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#products">PRODUCTS</a></li>
+                    <li><a href="#upcoming">UPCOMING</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 滚动广告条 -->
+    <div class="marquee-bar">
+        <div class="marquee-content">
+            <span class="marquee-item"><span class="tag">NEW</span> Gem Pack Vol.2 Limited Edition Now Available!</span>
+            <span class="marquee-item"><span class="tag">PRE-ORDER</span> Metal Deck Box Pre-order Now!</span>
+            <span class="marquee-item"><span class="tag">LIMITED</span> Pokémon 151 Magnet Set limited number available</span>
+        </div>
+    </div>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>CHINESE EXCLUSIVE POKÉMON</h1>
+            <p>Premium Collectibles Only Available in China</p>
+            <div class="exclusive-tag">LIMITED EDITION • AUTHENTIC • RARE</div>
+        </div>
+    </section>
+    
+    <!-- 产品展示 -->
+    <section id="products" class="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid">
+            <!-- 产品1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="carousel-container" id="carousel1">
+                        <div class="carousel-slide">
+                            <div class="carousel-item">
+                                <img src="https://preview.redd.it/chinese-gem-pack-volume-2-v0-smrvyf9vzdue1.jpg?width=500&format=pjpg&auto=webp&s=55cefe8f2e17753268db0a2378430868f555c748" alt="Gem Pack vol.2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://p16-oec-ttp.tiktokcdn-us.com/tos-useast5-i-omjb5zjo8w-tx/85df9836b495439abefac890fdea270b~tplv-omjb5zjo8w-crop-webp:400:400.webp?dr=10517&t=555f072d&ps=933b5bde&shp=57fff0e0&shcp=0d52deaf&idc=useast5&from=1476391136" alt="Gem Pack booster">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://hanabitradingco.ca/cdn/shop/files/2_671e8edd-2565-460b-b1ab-7b9f3d131ff8.jpg?v=1744768905&width=1445" alt="4 Cards">
+                            </div>
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="carousel-dots"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Gem Pack Vol.2</h3>
+                    <div class="product-price">$915 / Case (20 booster)</div>
+                    <p class="product-desc">Exclusive set featuring shiny Eevee cards, guaranteed ultra-rare card in every booster pack. Includes brand new Eevee V Shiny Holo Card.</p>
+                    <ul class="product-features">
+                        <li>4 Chinese exclusive SIR Eevee cards</li>
+                        <li>Special holographic treatment</li>
+                        <li>Limited edition release</li>
+                        <li>Each case contains 20 booster packs</li>
+                    </ul>
+                    <a href="#" class="product-cta">Order Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 产品2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="carousel-container" id="carousel2">
+                        <div class="carousel-slide">
+                            <div class="carousel-item">
+                                <img src="https://i.ebayimg.com/images/g/4d0AAOSwXetnka4e/s-l400.jpg" alt="151 Puzzle Magnet Set">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://imgur.com/j0GYgq2.jpg" alt="Magnet Set overall">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://imgur.com/pvjdK7m.jpg" alt="Magnet Set">
+                            </div>
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="carousel-dots"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Pokémon 151 Magnet Set</h3>
+                    <div class="product-price">$280 / Case (10 boxes)</div>
+                    <p class="product-desc">China-exclusive set containing one random metal magnet from 151 Pokémon and one pack of 5 cards from the 151 journey collection.</p>
+                    <ul class="product-features">
+                        <li>Metal magnets for all 151 Pokémon</li>
+                        <li>China exclusive limited edition</li>
+                        <li>Each box includes a 151 journey pack</li>
+                        <li>Perfect for display on fridge or magnetic boards</li>
+                    </ul>
+                    <a href="#" class="product-cta">Order Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- 产品3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="carousel-container" id="carousel3">
+                        <div class="carousel-slide">
+                            <div class="carousel-item">
+                                <img src="https://imgur.com/1Y8yBTC.png" alt="box">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://imgur.com/cdsj6ZZ.jpg" alt="card">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://imgur.com/GMkEUo2.jpg" alt="storage & sleeves">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://imgur.com/zyCjs87.jpg" alt="ir card">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://imgur.com/UKj8k6N.jpg" alt="pack">
+                            </div>
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="carousel-dots"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Illustration Rare Metal Deck Box</h3>
+                    <div class="product-price">$35.5 / Box</div>
+                    <p class="product-desc">Premium collector's edition featuring stunning holographic artwork card and premium metal storage. Each blind box contains exclusive collectibles.</p>
+                    <ul class="product-features">
+                        <li>Random exclusive art holo card per box</li>
+                        <li>Chance to get 1 of 2 rare hidden cards</li>
+                        <li>Includes 1 pack of Scarlet and Violet (CSV3C)</li>
+                        <li>Themed metal card storage box & magnetic sticker</li>
+                    </ul>
+                    <a href="#" class="product-cta">Order Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 新品预告 -->
+    <section id="upcoming" class="upcoming">
+        <div class="upcoming-container">
+            <h2 class="section-title">Upcoming Releases</h2>
+            <div class="upcoming-grid">
+                <div class="upcoming-card">
+                    <h3>Product 1</h3>
+                    <div class="release-date">Date 1</div>
+                    <p>Description 1</p>
+                </div>
+                
+                <div class="upcoming-card">
+                    <h3>Product 2</h3>
+                    <div class="release-date">Data 2</div>
+                    <p>Description 2</p>
+                </div>
+                
+                <div class="upcoming-card">
+                    <h3>Product 3</h3>
+                    <div class="release-date">Data 3</div>
+                    <p>Description 3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系区域 -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Contact Us</h2>
+                <p style="margin-bottom: 30px; font-size: 1.2rem;">No extra cost for shipping, customs clearance fees, and taxes! All included in our prices.</p>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Address</h3>
+                        <p>Edmonton, AB, Canada</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <p>604-679-3366</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <p>lixintong0409@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Shipping Policy</h3>
+                        <p>Free worldwide shipping with tracking number. Delivery in 15-20 business days.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-image">
+                <img src="https://pbs.twimg.com/media/Gh7btadboAAhpxa.jpg:large" alt="Pokémon exclusive cards">
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-logo">
+            <img src="https://imgur.com/EXi6pHy.jpg" alt="RAREMINT Logo">
+            <div class="footer-logo-text">RARE<span>MINT</span></div>
+        </div>
+        
+        <p class="footer-tagline">Your Trusted Source for Chinese Exclusive Pokémon Products</p>
+        
+    </footer>
+    
+    <script>
+        // 轮播图功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.carousel-container');
+            
+            carousels.forEach(carousel => {
+                const slide = carousel.querySelector('.carousel-slide');
+                const items = carousel.querySelectorAll('.carousel-item');
+                const prevBtn = carousel.querySelector('.prev-btn');
+                const nextBtn = carousel.querySelector('.next-btn');
+                const dotsContainer = carousel.querySelector('.carousel-dots');
+                
+                let currentIndex = 0;
+                const itemCount = items.length;
+                
+                // 创建指示点
+                for (let i = 0; i < itemCount; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+                
+                const dots = dotsContainer.querySelectorAll('.dot');
+                
+                function updateSlide() {
+                    slide.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    // 更新指示点
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                }
+                
+                function goToSlide(index) {
+                    currentIndex = index;
+                    updateSlide();
+                }
+                
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % itemCount;
+                    updateSlide();
+                }
+                
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                    updateSlide();
+                }
+                
+                // 添加事件监听
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+                
+                // 自动轮播
+                let autoplay = setInterval(nextSlide, 5000);
+                
+                // 鼠标悬停时暂停自动轮播
+                carousel.addEventListener('mouseenter', () => {
+                    clearInterval(autoplay);
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    autoplay = setInterval(nextSlide, 5000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
