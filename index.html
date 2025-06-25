@@ -294,6 +294,7 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
+            cursor: pointer; /* 添加指针样式 */
         }
         
         /* 轮播图样式 */
@@ -323,6 +324,7 @@
             max-height: 100%;
             object-fit: contain;
             transition: transform 0.5s ease;
+            cursor: pointer; /* 添加指针样式 */
         }
         
         .carousel-item img:hover {
@@ -686,7 +688,7 @@
             font-size: 0.9rem;
         }
 
-        /* 大图样式 */
+        /* 大图样式 - 修复 */
         .modal {
             display: none;
             position: fixed;
@@ -787,6 +789,11 @@
                 height: 300px;
                 order: -1;
             }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 75vh;
+            }
         }
         
         @media (max-width: 768px) {
@@ -824,6 +831,12 @@
             .hero {
                 min-height: 400px;
             }
+            
+            .modal-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -856,6 +869,18 @@
             
             .contact-image {
                 height: 250px;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+            
+            .modal-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -951,7 +976,7 @@
                     <div class="carousel-container" id="carousel2">
                         <div class="carousel-slide">
                             <div class="carousel-item">
-                            <img src="https://i.ebayimg.com/images/g/4d0AAOSwXetnka4e/s-l400.jpg" alt="151 Puzzle Magnet Set" data-product="Pokémon 151 Magnet Set">
+                                <img src="https://i.ebayimg.com/images/g/4d0AAOSwXetnka4e/s-l400.jpg" alt="151 Puzzle Magnet Set" data-product="Pokémon 151 Magnet Set">
                             </div>
                             <div class="carousel-item">
                                 <img src="https://imgur.com/j0GYgq2.jpg" alt="Magnet Set overall" data-product="Pokémon 151 Magnet Set">
@@ -987,7 +1012,7 @@
                     <div class="carousel-container" id="carousel3">
                         <div class="carousel-slide">
                             <div class="carousel-item">
-                                <img src="https://imgur.com/1Y8yBTC.png" alt="box" data-product="Illustration Rare Metal Deck Box>
+                                <img src="https://imgur.com/1Y8yBTC.png" alt="box" data-product="Illustration Rare Metal Deck Box">
                             </div>
                             <div class="carousel-item">
                                 <img src="https://imgur.com/cdsj6ZZ.jpg" alt="card" data-product="Illustration Rare Metal Deck Box">
@@ -996,7 +1021,7 @@
                                 <img src="https://imgur.com/GMkEUo2.jpg" alt="storage & sleeves" data-product="Illustration Rare Metal Deck Box">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://imgur.com/zyCjs87.jpg" alt="ir card"data-product="Illustration Rare Metal Deck Box">
+                                <img src="https://imgur.com/zyCjs87.jpg" alt="ir card" data-product="Illustration Rare Metal Deck Box">
                             </div>
                             <div class="carousel-item">
                                 <img src="https://imgur.com/UKj8k6N.jpg" alt="pack" data-product="Illustration Rare Metal Deck Box">
@@ -1023,10 +1048,10 @@
                 </div>
             </div>
             
-            <!-- 产品4 -->
+            <!-- 产品4 - 修复ID冲突 -->
             <div class="product-card">
                 <div class="product-image">
-                    <div class="carousel-container" id="carousel2">
+                    <div class="carousel-container" id="carousel4">
                         <div class="carousel-slide">
                             <div class="carousel-item">
                                 <img src="https://i.imgur.com/7bVZYEw.png" alt="Set overall" data-product="2025 New Chinese Exclusive Departure ETB">
@@ -1158,8 +1183,18 @@
         </div>
         
         <p class="footer-tagline">Your Trusted Source for Chinese Exclusive Pokémon Products</p>
-        
     </footer>
+
+    <!-- 添加缺失的模态框HTML结构 -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-nav">
+            <button class="modal-btn modal-prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="modal-btn modal-next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="image-caption" id="imageCaption"></div>
+    </div>
     
     <script>
         // 轮播图功能
@@ -1227,6 +1262,7 @@
                     autoplay = setInterval(nextSlide, 5000);
                 });
             });
+            
             // 大图查看功能
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
@@ -1245,7 +1281,7 @@
                 img.addEventListener('click', function() {
                     modal.style.display = "block";
                     modalImg.src = this.src;
-                    captionText.innerHTML = this.alt + " - " + this.dataset.product;
+                    captionText.innerHTML = this.alt;
                     
                     // 获取当前产品的所有图片
                     const productName = this.dataset.product;
@@ -1306,7 +1342,7 @@
                 if (currentProductImages.length > 0) {
                     const img = currentProductImages[currentModalIndex];
                     modalImg.src = img.src;
-                    captionText.innerHTML = img.alt + " - " + img.dataset.product;
+                    captionText.innerHTML = img.alt;
                 }
             }
         });
